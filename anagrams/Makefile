@@ -2,4 +2,4 @@ run:
 	python anagrams/
 
 test:
-	pytest
+	python -m pytest
