@@ -6,6 +6,14 @@ def test_get_anagrams():
     { 
       "word": "horse",
       "anagrams": ["horse", "shoer", "shore"]
+    },
+    { 
+      "word": "dog",
+      "anagrams": ["dog", "god"]
+    },
+    {
+      "word": "lemon",
+      "anagrams": ["lemon", "melon", "monel"]
     }
   ]
 
