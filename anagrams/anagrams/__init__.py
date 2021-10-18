@@ -12,4 +12,6 @@ def get_anagrams(word):
 
 def get_all_anagrams():
   for word in word_list:
-    print('{} : {}'.format(word, get_anagrams(word)))
+    anagrams = get_anagrams(word)
+    if anagrams != []:
+      print('{} : {}'.format(word, anagrams))
