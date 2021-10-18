@@ -1,3 +1,3 @@
 import anagrams
 
-anagrams.get_all_anagrams()
+anagrams.get_all()

@@ -18,8 +18,8 @@ def test_get_anagrams():
   ]
 
   for case in test_cases:
-    assert anagrams.get_anagrams(case["word"]) == case["anagrams"]
+    assert anagrams.get(case["word"]) == case["anagrams"]
 
 def test_non_existent_word():
   with pytest.raises(RuntimeError, match="purplemonkeydishwasher not found in dictionary"):
-        anagrams.get_anagrams("purplemonkeydishwasher")
+        anagrams.get("purplemonkeydishwasher")
