@@ -1,16 +1,21 @@
 import anagrams
 import pytest
 
-def test_get_anagrams():
+def test_separate_anagrams_from_list():
   test_cases = [
-    { "word": "horse", "anagrams": ["shoer", "shore"] },
-    { "word": "lemon", "anagrams": ["melon", "monel"] },
-    { "word": "dog", "anagrams": ["god"] },
+    { 
+      "word": "horse",
+      "word_list": ["horse", "house", "shoer", "shore"],
+      "anagrams": ["horse", "shoer", "shore"],
+      "not_anagrams": ["house"]
+    }
   ]
 
   for case in test_cases:
-    assert anagrams.get_anagrams(case["word"]) == case["anagrams"]
+    (found_anagrams, not_anagrams) = anagrams.separate_anagrams_from_list(case["word"], case["word_list"])
+    assert found_anagrams == case["anagrams"]
+    assert not_anagrams == case["not_anagrams"]
 
 def test_non_existent_word():
   with pytest.raises(RuntimeError, match="Word not found in dictionary"):
-        anagrams.get_anagrams("purplemonkeydishwasher")
+        anagrams.separate_anagrams_from_list("purplemonkeydishwasher", ["orange", "giraffe", "kettle"])

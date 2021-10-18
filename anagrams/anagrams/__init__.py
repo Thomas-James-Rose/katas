@@ -15,16 +15,28 @@ words_file = open("./words.txt", "r")
 word_list =  words_file.read().splitlines()
 word_list_by_word_length = reduce(sort_word_by_length, word_list, {})
 
-def get_anagrams(word):
+def separate_anagrams_from_list(word, word_list):
   if word not in word_list:
-    raise RuntimeError('Word not found in dictionary')
+    raise RuntimeError('Word not found in list')
 
-  anagram_filter = words.get_anagram_filter(word)
-  anagrams = list(filter(anagram_filter, word_list_by_word_length[len(word)]))
-  return anagrams
+  anagrams = []
+  not_anagrams = []
+  
+  for check_word in word_list:
+    if ''.join(sorted(word)) == ''.join(sorted(check_word)):
+      anagrams = anagrams + [check_word]
+    else:
+      not_anagrams = not_anagrams + [check_word]
+
+  return (anagrams, not_anagrams)
 
 def get_all_anagrams():
-  for word in word_list:
-    anagrams = get_anagrams(word)
-    if anagrams != []:
-      print('{} : {}'.format(word, anagrams))
+  for word_length in word_list_by_word_length:
+    word_list = word_list_by_word_length[word_length]
+    anagrams_list = []
+
+    while len(word_list) > 0: 
+      word = word_list[0]
+      (anagrams, remaining_list) = separate_anagrams_from_list(word, word_list)
+      print(anagrams)
+      word_list = remaining_list
