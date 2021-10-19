@@ -1,8 +1,7 @@
-import sys
 import string
 import functools 
 
-def longest_palindrome(input_string):
+def get(input_string):
   if(input_string == ""):
     print(f"Input String: \"\"")
     print("Length: 0")
@@ -25,4 +24,4 @@ def longest_palindrome(input_string):
   print(f"Length: {len(longest_palindrome)}")
   print("\n")
 
-longest_palindrome(sys.argv[1])
+  return longest_palindrome
